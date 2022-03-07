@@ -1,0 +1,114 @@
+if(Character.isDigit(board[row][col])){
+			int bombAcc = 0;
+
+			if(col < 6 && board[row][col + 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row][col + 1])){
+					return false;
+				}
+			}
+
+			if(row < 6 && board[row + 1][col] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row + 1][col])){
+					return false;
+				}
+			}
+
+			if(col > 0 && board[row][col - 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row][col - 1])){
+					return false;
+				}
+			}
+
+			if(row > 0 && board[row - 1][col] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row - 1][col])){
+					return false;
+				}
+			}
+
+			if(col < 6 && row < 6 &&board[row + 1][col + 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row + 1][col + 1])){
+					return false;
+				}
+			}
+
+			if(col > 0 && row > 0 && board[row - 1][col - 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row - 1][col - 1])){
+					return false;
+				}
+			}
+
+			if(col < 6 && row > 0 && board[row - 1 ][col + 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row - 1][col + 1])){
+					return false;
+				}
+			}
+
+			if(col > 0 && row < 6 && board[row + 1][col - 1] == '*'){
+				bombAcc++;
+				if(bombAcc > Character.getNumericValue(board[row + 1][col - 1])){
+					return false;
+				}
+			}
+		}
+		
+		System.out.println("placement is valid");
+		return true;
+
+// check if an index's placement is valid
+	private static boolean placementIsValid(char[][] board, int row, int col){
+		if(col < 6 && Character.isDigit(board[row][col + 1])){
+			if(checkDigit(board, row, col + 1) == false){
+				return false;
+			}				
+		}
+
+		if(row < 6 && Character.isDigit(board[row + 1][col])){
+			if(checkDigit(board, row + 1, col) == false){
+				return false;
+			}	
+		}
+
+		if(col > 0 && Character.isDigit(board[row][col - 1])){
+			if(checkDigit(board, row, col - 1) == false){
+				return false;
+			}	
+		}
+
+		if(row > 0 && Character.isDigit(board[row - 1][col])){
+			if(checkDigit(board, row - 1, col) == false){
+				return false;
+			}	
+		}
+
+		if(row < 6 && col < 6 && Character.isDigit(board[row + 1][col + 1])){
+			if(checkDigit(board, row + 1, col + 1) == false){
+				return false;
+			}	
+		}
+
+		if(row > 0 && col > 0 && Character.isDigit(board[row - 1][col - 1])){
+			if(checkDigit(board, row - 1, col - 1) == false){
+				return false;
+			}
+		}
+
+		if(row > 0 && col < 6 && Character.isDigit(board[row - 1 ][col + 1])){
+			if(checkDigit(board, row - 1, col + 1) == false){
+				return false;
+			}
+		}
+
+		if(row < 6  && col > 0 && Character.isDigit(board[row + 1][col - 1])){
+			if(checkDigit(board, row + 1, col - 1) == false){
+				return false;
+			}
+		}
+		return true;
+	}
